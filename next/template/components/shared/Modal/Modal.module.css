@@ -1,0 +1,49 @@
+.modal {
+    position: fixed;
+    left: 0;
+    top: 0;
+    width: 100vw;
+    height: 100vh;
+    display: flex;
+    flex-direction: column;
+    z-index: 1000;
+    max-height: 100vh;
+    max-width: 100vw;
+    overflow: hidden;
+  }
+  
+  .backdrop {
+    position: absolute;
+    left: 0;
+    top: 0;
+    width: 100%;
+    height: 100%;
+    background-color: black;
+    z-index: -1;
+    opacity: 0.9;
+  }
+  
+  .closeIcon {
+    font-size: 30px;
+    margin: var(--margin-y-l) var(--margin-y-l) auto auto;
+    color: white;
+    cursor: pointer;
+    flex: none;
+  }
+  
+  .modalContent {
+    flex: 1;
+    margin: var(--margin-y-l);
+    overflow: hidden;
+    display: flex;
+  }
+  
+  @media only screen and (max-width: 590px) {
+    .closeIcon {
+      margin: var(--margin-x-s) var(--margin-x-s) auto auto;
+    }
+  
+    .modalContent {
+      margin: var(--margin-x-s);
+    }
+  }

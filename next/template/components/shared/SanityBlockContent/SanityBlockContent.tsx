@@ -1,10 +1,9 @@
-// import { useGalleryModal } from "components/hooks/useGalleryModal";
-// import { GalleryModal } from "../GalleryModal";
 import { formatBodyRawImage } from "@template/helpers/blockContent";
 import { ImageRenderer, ImageRendererProps } from "./ImageRenderer";
 import styles from "./SanityBlockContent.module.css";
 import { PortableText } from "@portabletext/react";
 import { Image } from "@template/types/image";
+import { GalleryModal, useGalleryModal } from "../GalleryModal";
 // import { Link } from "../Link";
 
 interface SanityBlockContentProps {
@@ -22,17 +21,15 @@ export const SanityBlockContent: React.FC<SanityBlockContentProps> = (
     .filter((v: any) => v._type === "image")
     .map((v: any) => formatBodyRawImage(v.asset._ref));
 
-  // const { onImageClick, ...galleryModalProps } = useGalleryModal([
-  //   ...extraImages,
-  //   ...images,
-  // ]);
+  const { onImageClick, ...galleryModalProps } = useGalleryModal([
+    ...extraImages,
+    ...images,
+  ]);
 
   const myPortableTextComponents = {
     types: {
       image: (props: ImageRendererProps) => (
-        <ImageRenderer
-          {...{ ...props, onImageClick: console.log, alt: altBase }}
-        />
+        <ImageRenderer {...{ ...props, onImageClick, alt: altBase }} />
       ),
     },
     // marks: {
@@ -51,10 +48,10 @@ export const SanityBlockContent: React.FC<SanityBlockContentProps> = (
         />
       </div>
 
-      {/* <GalleryModal
+      <GalleryModal
         images={[...extraImages, ...images]}
         {...galleryModalProps}
-      /> */}
+      />
     </>
   );
 };

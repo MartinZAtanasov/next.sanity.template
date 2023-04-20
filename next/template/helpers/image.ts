@@ -1,4 +1,4 @@
-import { Image, SanityImage } from '../types/image';
+import { Image, SanityImage } from "../types/image";
 
 const DEFAULT_MAX_WIDTH = 1000;
 

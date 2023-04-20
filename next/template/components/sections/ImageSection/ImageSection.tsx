@@ -1,15 +1,14 @@
-// import { Section } from "../Section";
-// import { SectionTitle } from "../SectionTitle";
-// import { GalleryModal } from "components/shared/GalleryModal";
 import { default as NextImage } from "next/image";
-// import { Image } from "types/image";
 import { Image } from "@template/types/image";
 import styles from "./ImageSection.module.css";
 import { Section, SectionTitle } from "../Section";
 import { ccn } from "@template/helpers/css";
 import { SanityBlockContent } from "@template/components/shared/SanityBlockContent/SanityBlockContent";
 import { formatDimensions } from "@template/helpers/image";
-// import { useGalleryModal } from "components/hooks/useGalleryModal";
+import {
+  GalleryModal,
+  useGalleryModal,
+} from "@template/components/shared/GalleryModal";
 
 export interface ImageSectionProps {
   title: string;
@@ -17,8 +16,6 @@ export interface ImageSectionProps {
   image: Image;
   bodyRaw: any;
   isImageRight: boolean;
-  buttonText?: string;
-  buttonNavigatesTo?: string;
   altBase: string;
   __typename: string;
 }
@@ -26,7 +23,7 @@ export interface ImageSectionProps {
 export const ImageSection: React.FC<ImageSectionProps> = (props) => {
   const { title, subtitle, image, bodyRaw, isImageRight, altBase } = props;
 
-  // const { onImageClick, ...galleryModalProps } = useGalleryModal([image]);
+  const { onImageClick, ...galleryModalProps } = useGalleryModal([image]);
 
   return (
     <>
@@ -41,7 +38,7 @@ export const ImageSection: React.FC<ImageSectionProps> = (props) => {
           </div>
 
           <div
-            // onClick={() => onImageClick(image)}
+            onClick={() => onImageClick(image)}
             className="pulsePointer centeredContent"
           >
             <NextImage
@@ -54,7 +51,7 @@ export const ImageSection: React.FC<ImageSectionProps> = (props) => {
         </div>
       </Section>
 
-      {/* <GalleryModal images={[image]} {...galleryModalProps} /> */}
+      <GalleryModal images={[image]} {...galleryModalProps} />
     </>
   );
 };
