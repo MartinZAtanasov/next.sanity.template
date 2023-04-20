@@ -18,6 +18,10 @@
     height: 2px;
     background-color: var(--primary-color);
   }
+
+  .container a {
+    text-decoration: underline;
+  }
   
   /* Link */
   /* .container a {
