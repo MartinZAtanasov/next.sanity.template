@@ -1,13 +1,11 @@
-// import { useGalleryModal } from 'components/hooks/useGalleryModal';
-// import { Image } from 'types/image';
-// import { GalleryModal } from '../GalleryModal';
+// import { useGalleryModal } from "components/hooks/useGalleryModal";
+// import { GalleryModal } from "../GalleryModal";
+import { formatBodyRawImage } from "@template/helpers/blockContent";
 import { ImageRenderer, ImageRendererProps } from "./ImageRenderer";
-// import styles from './SanityBlockContent.module.css';
+import styles from "./SanityBlockContent.module.css";
 import { PortableText } from "@portabletext/react";
-// import { Link } from '../Link';
-import { formatBodyRawImage } from "../../../helpers/blockContent";
-import Link from "next/link";
-import { Image } from "../../../types/image";
+import { Image } from "@template/types/image";
+// import { Link } from "../Link";
 
 interface SanityBlockContentProps {
   bodyRaw: any;
@@ -32,20 +30,21 @@ export const SanityBlockContent: React.FC<SanityBlockContentProps> = (
   const myPortableTextComponents = {
     types: {
       image: (props: ImageRendererProps) => (
-        // <ImageRenderer {...{ ...props, onImageClick, alt: altBase }} />
-        <ImageRenderer {...{ ...props, alt: altBase }} />
+        <ImageRenderer
+          {...{ ...props, onImageClick: console.log, alt: altBase }}
+        />
       ),
     },
-    marks: {
-      link: ({ children, value: { href } }: any) => (
-        <Link href={href}>{children}</Link>
-      ),
-    },
+    // marks: {
+    //   link: ({ children, value: { href } }: any) => (
+    //     <Link href={href}>{children}</Link>
+    //   ),
+    // },
   };
 
   return (
     <>
-      <div>
+      <div className={styles.container}>
         <PortableText
           value={bodyRaw}
           components={myPortableTextComponents as any}

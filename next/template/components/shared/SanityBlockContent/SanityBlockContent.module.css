@@ -1,0 +1,40 @@
+/* H2 Title */
+.container h2 {
+    margin-bottom: var(--margin-y-l);
+    font-size: var(--section-title-font-size);
+    color: var(--text-color);
+    position: relative;
+    display: flex;
+    flex-direction: column;
+    /* color: white; */
+  }
+  
+  .container h2::before {
+    content: "";
+    position: absolute;
+    left: 0;
+    bottom: -10px;
+    width: 170px;
+    height: 2px;
+    background-color: var(--primary-color);
+  }
+  
+  /* Link */
+  /* .container a {
+    color: white;
+    transition: 0.2s ease;
+  }
+  
+  .container a:hover {
+    color: var(--primary-color);
+  } */
+  
+  /* Paragraph */
+  .container p:not(:last-child) {
+    margin-bottom: 10px;
+  }
+  
+  .container p {
+    display: inline-block;
+    overflow: hidden;
+  }

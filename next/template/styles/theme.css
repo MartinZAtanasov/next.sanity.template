@@ -1,0 +1,57 @@
+:root {
+    /** Color */
+    --primary-color: #9c5581;
+    --secondary-color: #1a606c;
+    --text-primary-color: #45273a;
+    --text-secondary-color: black;
+    --divider-color: #eae7ea;
+  
+    /** Landing */
+    --landing-title-font-size: 60px;
+    --landing-title-line-height: 60px;
+  
+    /** Section */
+    --section-title-font-size: 40px;
+  
+    /** Paragraph */
+    --paragraph-font-size: 18px;
+    --paragraph-line-height: 26px;
+  
+    /** Button */
+    --button-padding: 10px 15px;
+    --button-font-size: 16px;
+  
+    /** Layout */
+    --max-width: 1100px;
+  
+    --margin-y-xl: 100px;
+    --margin-y-l: 40px;
+    --margin-y-m: 30px;
+    --margin-y-s: 20px;
+  
+    --margin-x-s: 15px;
+  
+    --col-gap: 50px;
+    --row-gap: 30px;
+  
+    /* Box shadow */
+    --box-shadow: rgb(0 0 0 / 15%) 0px 0.5rem 1rem;
+  }
+  
+  @media only screen and (max-width: 850px) {
+    :root {
+      /** Landing */
+      --landing-title-font-size: 40px;
+      --landing-subTitle-font-size: 25px;
+  
+      /** Section */
+      --section-title-font-size: 35px;
+  
+      /** Paragraph */
+      --paragraph-font-size: 16px;
+  
+      /** Layout */
+      --margin-y-xl: 60px;
+      --margin-y-l: 30px;
+    }
+  }

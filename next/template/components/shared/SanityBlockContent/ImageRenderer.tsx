@@ -1,8 +1,8 @@
-import { default as NextImage } from 'next/image';
-// import styles from './ImageRenderer.module.css';
-import { Image } from '../../../types/image';
-import { formatBodyRawImage } from '../../../helpers/blockContent';
-import { formatDimensions } from '../../../helpers/image';
+import { default as NextImage } from "next/image";
+import styles from "./ImageRenderer.module.css";
+import { Image } from "@template/types/image";
+import { formatBodyRawImage } from "@template/helpers/blockContent";
+import { formatDimensions } from "@template/helpers/image";
 
 export interface ImageRendererProps {
   value: {
@@ -28,13 +28,13 @@ export const ImageRenderer: React.FC<ImageRendererProps> = (props) => {
   const blurDataURL = image?.blurDataURL;
 
   return (
-    <div>
-      <div className="pulsePointer" style={{ display: 'inline-block' }}>
+    <div className={styles.container}>
+      <div className="pulsePointer" style={{ display: "inline-block" }}>
         <NextImage
           {...formatDimensions(image)}
           onClick={() => onImageClick && onImageClick(image)}
           alt={alt}
-          placeholder={blurDataURL ? 'blur' : 'empty'}
+          placeholder={blurDataURL ? "blur" : "empty"}
           blurDataURL={blurDataURL}
         />
       </div>

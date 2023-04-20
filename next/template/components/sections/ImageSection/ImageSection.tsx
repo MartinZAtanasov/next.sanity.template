@@ -1,14 +1,15 @@
-import { Section } from '../Section/Section';
-import { SectionTitle } from '../SectionTitle/SectionTitle';
-// import { GalleryModal } from 'components/shared/GalleryModal';
-import { default as NextImage } from 'next/image';
-import { Image } from '../../../types/image';
-// import styles from './ImageSection.module.css';
-// import { useGalleryModal } from 'components/hooks/useGalleryModal';
-import { formatDimensions } from '../../../helpers/image';
-import { SanityBlockContent } from '../../shared/SanityBlockContent/SanityBlockContent';
-// import { ccn } from 'helpers/cssModules';
-// import { SanityBlockContent } from 'components/shared/SanityBlockContent';
+// import { Section } from "../Section";
+// import { SectionTitle } from "../SectionTitle";
+// import { GalleryModal } from "components/shared/GalleryModal";
+import { default as NextImage } from "next/image";
+// import { Image } from "types/image";
+import { Image } from "@template/types/image";
+import styles from "./ImageSection.module.css";
+import { Section, SectionTitle } from "../Section";
+import { ccn } from "@template/helpers/css";
+import { SanityBlockContent } from "@template/components/shared/SanityBlockContent/SanityBlockContent";
+import { formatDimensions } from "@template/helpers/image";
+// import { useGalleryModal } from "components/hooks/useGalleryModal";
 
 export interface ImageSectionProps {
   title: string;
@@ -23,23 +24,16 @@ export interface ImageSectionProps {
 }
 
 export const ImageSection: React.FC<ImageSectionProps> = (props) => {
-  const {
-    title,
-    subtitle,
-    image,
-    bodyRaw,
-    isImageRight,
-    buttonText,
-    buttonNavigatesTo,
-    altBase,
-  } = props;
+  const { title, subtitle, image, bodyRaw, isImageRight, altBase } = props;
 
-  //   const { onImageClick, ...galleryModalProps } = useGalleryModal([image]);
+  // const { onImageClick, ...galleryModalProps } = useGalleryModal([image]);
 
   return (
     <>
       <Section>
-        <div>
+        <div
+          className={`container ${ccn(!isImageRight, styles.containerReverse)}`}
+        >
           <div>
             <SectionTitle title={title} subtitle={subtitle} />
 

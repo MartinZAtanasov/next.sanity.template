@@ -1,2 +1,1 @@
-export * from './next-sanity-ui';
-export * from './page';
+export * from "./page";
