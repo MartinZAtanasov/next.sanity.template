@@ -9,16 +9,15 @@ export const getServerSideProps = async () => {
   };
 };
 
-const Home = (props: PageProps) => {
+const About = (props: PageProps) => {
   const { push } = useRouter();
   return (
     <>
-      <Button variant="contained" onClick={() => push("/about")}>
-        To About page
+      <Button variant="contained" onClick={() => push("/")}>
+        To Home page
       </Button>
       <Page {...props} />
     </>
   );
 };
-
-export default Home;
+export default About;
