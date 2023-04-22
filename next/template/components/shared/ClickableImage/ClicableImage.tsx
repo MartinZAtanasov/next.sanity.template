@@ -1,7 +1,7 @@
 import { Box, keyframes } from "@mui/material";
-import { formatDimensions } from "@template/helpers/image";
-import { Image } from "@template/types/image";
 import { default as NextImage, ImageProps } from "next/image";
+import { Image } from "../../../types/image";
+import { formatDimensions } from "../../../helpers/image";
 
 interface Props extends Omit<ImageProps, "src" | "width" | "height"> {
   image: Image;

@@ -1,11 +1,10 @@
-import { formatBodyRawImage, mapHref } from "@template/helpers/blockContent";
 import { ImageRenderer, ImageRendererProps } from "./ImageRenderer";
-import styles from "./SanityBlockContent.module.css";
 import { PortableText } from "@portabletext/react";
-import { Image } from "@template/types/image";
 import { GalleryModal, useGalleryModal } from "../GalleryModal";
 import Link from "next/link";
 import { Link as LinkMUI } from "@mui/material";
+import { Image } from "../../../types/image";
+import { formatBodyRawImage, mapHref } from "../../../helpers/blockContent";
 
 interface SanityBlockContentProps {
   bodyRaw: any;

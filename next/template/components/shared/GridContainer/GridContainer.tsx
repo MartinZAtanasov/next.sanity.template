@@ -1,7 +1,8 @@
 import { Box } from "@mui/material";
-import { mediaBreakPoint } from "@template/theme";
-import { LAYOUT } from "@template/theme/constants";
+
 import { PropsWithChildren } from "react";
+import { LAYOUT } from "../../../theme/constants";
+import { mediaBreakPoint } from "../../../theme";
 
 interface Props extends PropsWithChildren {
   reverse?: boolean;

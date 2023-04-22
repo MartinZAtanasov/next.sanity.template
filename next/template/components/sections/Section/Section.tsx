@@ -1,7 +1,7 @@
 import { PropsWithChildren } from "react";
 import { Box } from "@mui/material";
-import { mediaBreakPoint } from "@template/theme";
-import { LAYOUT } from "@template/theme/constants";
+import { LAYOUT } from "../../../theme/constants";
+import { mediaBreakPoint } from "../../../theme";
 
 const { SPACING_XL, SPACING_S, MAX_WIDTH, SPACING_XL_MOBILE } = LAYOUT;
 

@@ -1,3 +1,5 @@
+import {Rule} from 'sanity'
+
 export const seo = {
   name: 'seo',
   title: 'SEO',
@@ -5,20 +7,21 @@ export const seo = {
   fields: [
     {
       name: 'title',
-      title: 'SEO Title',
+      title: 'SEO title*',
       type: 'string',
-      description: 'recommend title is between 50 and 70 characters.',
+      validation: (Rule: Rule) => Rule.required(),
     },
     {
       name: 'description',
-      title: 'SEO Description',
+      title: 'SEO description*',
       type: 'string',
-      description: 'recommend description is between 50 and 160 characters.',
+      validation: (Rule: Rule) => Rule.required(),
     },
     {
       name: 'altBase',
-      title: 'Image Alt Base',
+      title: 'Image alt base*',
       type: 'string',
+      validation: (Rule: Rule) => Rule.required(),
     },
   ],
 }

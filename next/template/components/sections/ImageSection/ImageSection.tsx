@@ -1,13 +1,10 @@
-import { Image } from "@template/types/image";
 import { Section, SectionTitle } from "../Section";
-import { SanityBlockContent } from "@template/components/shared/SanityBlockContent/SanityBlockContent";
-import {
-  GalleryModal,
-  useGalleryModal,
-} from "@template/components/shared/GalleryModal";
-import { GridContainer } from "@template/components/shared/GridContainer";
+import { SanityBlockContent } from "../..//shared/SanityBlockContent/SanityBlockContent";
+import { GalleryModal, useGalleryModal } from "../..//shared/GalleryModal";
+import { GridContainer } from "../..//shared/GridContainer";
 import { Box } from "@mui/material";
-import { ClickableImage } from "@template/components/shared/ClickableImage";
+import { ClickableImage } from "../..//shared/ClickableImage";
+import { Image } from "../../../types/image";
 
 export interface ImageSectionProps {
   title: string;

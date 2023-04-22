@@ -1,5 +1,5 @@
-import { Image } from "@template/types/image";
-import { formatBodyRawImage } from "@template/helpers/blockContent";
+import { formatBodyRawImage } from "../../../helpers/blockContent";
+import { Image } from "../../../types/image";
 import { ClickableImage } from "../ClickableImage";
 
 export interface ImageRendererProps {

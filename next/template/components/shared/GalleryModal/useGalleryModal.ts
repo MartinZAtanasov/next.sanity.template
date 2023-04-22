@@ -1,5 +1,5 @@
-import { Image } from "@template/types/image";
 import { useState } from "react";
+import { Image } from "../../../types/image";
 
 export const useGalleryModal = (images: Image[]) => {
   const [selectedImageIndex, setSelectedImageIndex] = useState(-1);

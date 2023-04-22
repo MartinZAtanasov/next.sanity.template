@@ -1,11 +1,11 @@
 import { default as NextImage } from "next/image";
 import { PropsWithChildren } from "react";
-import { Image } from "@template/types/image";
-import { formatDimensions } from "@template/helpers/image";
 import { Box, IconButton, Modal } from "@mui/material";
 import Carousel from "react-material-ui-carousel";
-import { LAYOUT } from "@template/theme/constants";
 import CloseIcon from "@mui/icons-material/Close";
+import { Image } from "../../../types/image";
+import { LAYOUT } from "../../../theme/constants";
+import { formatDimensions } from "../../../helpers/image";
 
 interface GalleryModalProps {
   images: Image[];
