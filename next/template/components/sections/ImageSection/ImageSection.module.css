@@ -1,9 +1,0 @@
-.containerReverse > div:first-child {
-    order: 2;
-  }
-  
-  @media only screen and (max-width: 850px) {
-    .containerReverse > div:first-child {
-      order: 0;
-    }
-  }

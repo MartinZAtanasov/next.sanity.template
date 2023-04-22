@@ -11,6 +11,7 @@ export const getServerSideProps = async () => {
 
 const Home = (props: PageProps) => {
   const { push } = useRouter();
+
   return (
     <>
       <Button variant="contained" onClick={() => push("/about")}>

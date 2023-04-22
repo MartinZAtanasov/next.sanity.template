@@ -5,6 +5,7 @@ import { PortableText } from "@portabletext/react";
 import { Image } from "@template/types/image";
 import { GalleryModal, useGalleryModal } from "../GalleryModal";
 import Link from "next/link";
+import { Link as LinkMUI } from "@mui/material";
 
 interface SanityBlockContentProps {
   bodyRaw: any;
@@ -38,9 +39,13 @@ export const SanityBlockContent: React.FC<SanityBlockContentProps> = (
         const isInternal = mappedHref[0] === "/";
 
         return (
-          <Link href={mappedHref} target={isInternal ? undefined : "_blank"}>
+          <LinkMUI
+            component={Link}
+            href={mappedHref}
+            target={isInternal ? undefined : "_blank"}
+          >
             {children}
-          </Link>
+          </LinkMUI>
         );
       },
     },
@@ -48,12 +53,10 @@ export const SanityBlockContent: React.FC<SanityBlockContentProps> = (
 
   return (
     <>
-      <div className={styles.container}>
-        <PortableText
-          value={bodyRaw}
-          components={myPortableTextComponents as any}
-        />
-      </div>
+      <PortableText
+        value={bodyRaw}
+        components={myPortableTextComponents as any}
+      />
 
       <GalleryModal
         images={[...extraImages, ...images]}

@@ -1,14 +1,13 @@
-import { default as NextImage } from "next/image";
 import { Image } from "@template/types/image";
-import styles from "./ImageSection.module.css";
 import { Section, SectionTitle } from "../Section";
-import { ccn } from "@template/helpers/css";
 import { SanityBlockContent } from "@template/components/shared/SanityBlockContent/SanityBlockContent";
-import { formatDimensions } from "@template/helpers/image";
 import {
   GalleryModal,
   useGalleryModal,
 } from "@template/components/shared/GalleryModal";
+import { GridContainer } from "@template/components/shared/GridContainer";
+import { Box } from "@mui/material";
+import { ClickableImage } from "@template/components/shared/ClickableImage";
 
 export interface ImageSectionProps {
   title: string;
@@ -28,27 +27,21 @@ export const ImageSection: React.FC<ImageSectionProps> = (props) => {
   return (
     <>
       <Section>
-        <div
-          className={`container ${ccn(!isImageRight, styles.containerReverse)}`}
-        >
-          <div>
-            <SectionTitle title={title} subtitle={subtitle} />
-
+        <GridContainer reverse={!isImageRight}>
+          <Box>
+            <SectionTitle {...{ title, subtitle }} />
             <SanityBlockContent {...{ bodyRaw, altBase }} />
-          </div>
+          </Box>
 
-          <div
-            onClick={() => onImageClick(image)}
-            className="pulsePointer centeredContent"
-          >
-            <NextImage
-              {...formatDimensions(image, 550)}
-              alt={`${altBase} - ${title}`}
-              placeholder="blur"
-              blurDataURL={image.blurDataURL}
-            />
-          </div>
-        </div>
+          <ClickableImage
+            {...{
+              onImageClick,
+              image,
+              alt: `${altBase} - ${title}`,
+              maxWidth: 550,
+            }}
+          />
+        </GridContainer>
       </Section>
 
       <GalleryModal images={[image]} {...galleryModalProps} />

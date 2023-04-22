@@ -1,24 +1,25 @@
-import "@template/styles/theme.css";
-import "@template/styles/globals.css";
-import "@template/styles/sharedClasses.css";
-
 import type { AppProps } from "next/app";
 import { Balsamiq_Sans, Bellota_Text } from "next/font/google";
-import { ThemeProvider } from "@mui/material";
+import { CssBaseline, ThemeProvider } from "@mui/material";
+import { enrichedTheme } from "@template/theme";
 
 const balsamiq = Balsamiq_Sans({ subsets: ["latin"], weight: "400" });
 const bellota = Bellota_Text({ subsets: ["latin"], weight: "700" });
 
-export default function App({ Component, pageProps }: AppProps) {
+export default function App(props: AppProps) {
+  const { Component, pageProps } = props;
+
   return (
     <>
       <style jsx global>{`
-        html {
+        :root {
           --primary-font-family: ${balsamiq.style.fontFamily};
           --secondary-font-family: ${bellota.style.fontFamily};
         }
       `}</style>
-      <ThemeProvider theme={{}}>
+
+      <ThemeProvider theme={enrichedTheme}>
+        <CssBaseline />
         <Component {...pageProps} />;
       </ThemeProvider>
     </>

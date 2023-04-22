@@ -1,25 +1,51 @@
-import { ccn } from "@template/helpers/css";
-import styles from "./Section.module.css";
+import { Box, Typography } from "@mui/material";
 
 interface SectionTitleProps {
   title: string;
   subtitle?: string;
-  extraMargin?: boolean;
+  gutterBottom?: boolean;
   center?: boolean;
 }
 
 export const SectionTitle: React.FC<SectionTitleProps> = (props) => {
-  const { title, extraMargin, subtitle, center } = props;
+  const { title, gutterBottom, subtitle, center } = props;
 
   return (
-    <h2
-      className={`${styles.title} ${ccn(
-        extraMargin!,
-        styles.extraMargin
-      )} ${ccn(center!, styles.center)}`}
+    <Typography
+      variant="h2"
+      position="relative"
+      display="flex"
+      flexDirection="column"
+      gutterBottom={gutterBottom}
+      textAlign={center ? "center" : undefined}
     >
       {title}
-      {subtitle && <span>{subtitle}</span>}
-    </h2>
+
+      {subtitle && (
+        <Typography
+          component="span"
+          sx={{
+            fontSize: "20px",
+            marginTop: "10px",
+            color: "primary.main",
+            fontFamily: "var(--secondary-font-family)",
+          }}
+        >
+          {subtitle}
+        </Typography>
+      )}
+
+      <Box
+        sx={{
+          position: "absolute",
+          left: center ? "50%" : 0,
+          transform: `translateX(${center ? -50 : 0}%)`,
+          bottom: "-10px",
+          width: "170px",
+          height: "2px",
+          background: (theme) => theme.palette.primary.main,
+        }}
+      />
+    </Typography>
   );
 };
