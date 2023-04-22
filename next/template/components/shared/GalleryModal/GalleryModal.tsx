@@ -1,81 +1,118 @@
 import { default as NextImage } from "next/image";
-import styles from "./GalleryModal.module.css";
-import { useRef } from "react";
+import { PropsWithChildren } from "react";
 import { Image } from "@template/types/image";
 import { formatDimensions } from "@template/helpers/image";
-import { Modal } from "../Modal";
+import { Box, IconButton, Modal } from "@mui/material";
+import Carousel from "react-material-ui-carousel";
+import { LAYOUT } from "@template/theme/constants";
+import CloseIcon from "@mui/icons-material/Close";
 
 interface GalleryModalProps {
   images: Image[];
   onClose: () => any;
-  onNextImage: () => any;
-  onPrevImage: () => any;
   selectedImageIndex: number;
+  onChangeImage: (index: number) => void;
 }
 
-export const GalleryModal: React.FC<GalleryModalProps> = (props) => {
-  const { images, onClose, selectedImageIndex, onNextImage, onPrevImage } =
-    props;
+const ImageWrapper = ({ children }: PropsWithChildren) => (
+  <Box
+    sx={{
+      overflow: "hidden",
+      position: "relative",
+      display: "flex",
+      justifyContent: "center",
+      alignItems: "center",
+      height: "100vh",
+      padding: LAYOUT.SPACING_XS,
+      "& > *": {
+        maxWidth: "100%",
+        maxHeight: "100%",
+        height: "auto",
+        pointerEvents: "none",
+        objectFit: "contain",
+      },
+    }}
+  >
+    {children}
+  </Box>
+);
 
-  const isOpen = selectedImageIndex > -1;
+export const GalleryModal: React.FC<GalleryModalProps> = (props) => {
+  const { images, onClose, selectedImageIndex, onChangeImage } = props;
+
+  const open = selectedImageIndex > -1;
 
   const selectedImage = images[selectedImageIndex];
 
-  const isLastImage = selectedImageIndex === images.length - 1;
-  const isFirstImage = selectedImageIndex === 0;
-
   const blurDataURL = selectedImage?.blurDataURL;
 
-  // On Slide
-  const slideStartX = useRef(0);
-  const slideEndX = useRef(0);
-
-  const onSlideStart = (screenX: number) => {
-    slideStartX.current = screenX;
-  };
-
-  const onSlideEnd = (screenX: number) => {
-    slideEndX.current = screenX;
-    if (slideEndX.current < slideStartX.current && !isLastImage) {
-      onNextImage();
-    }
-    if (slideEndX.current > slideStartX.current && !isFirstImage) {
-      onPrevImage();
-    }
-  };
+  if (!open) return null;
 
   return (
-    <Modal isOpen={isOpen} onClose={onClose}>
-      {isOpen && (
-        <div className={styles.container}>
-          <div>
-            {!isFirstImage && (
-              <div className={`${styles.arrow}`} onClick={() => onPrevImage()}>
-                &#x276E;
-              </div>
-            )}
-          </div>
-          <div
-            onTouchStart={(e) => onSlideStart(e.changedTouches[0].screenX)}
-            onTouchEnd={(e) => onSlideEnd(e.changedTouches[0].screenX)}
-            className={styles.imageContainer}
-          >
-            <NextImage
-              {...formatDimensions(selectedImage, 1000)}
-              alt="modal-image"
-              placeholder={blurDataURL ? "blur" : "empty"}
-              blurDataURL={blurDataURL}
-            />
-          </div>
-          <div>
-            {!isLastImage && (
-              <div className={`${styles.arrow}`} onClick={() => onNextImage()}>
-                &#x276F;
-              </div>
-            )}
-          </div>
-        </div>
-      )}
+    <Modal {...{ open, onClose }}>
+      <Box height="100%">
+        <IconButton
+          onClick={onClose}
+          sx={{
+            position: "absolute",
+            top: "10px",
+            right: "10px",
+            zIndex: 10,
+            cursor: "pointer",
+            background: "#494949",
+            color: "white",
+            "&:hover": {
+              background: "black",
+              opacity: 0.6,
+            },
+          }}
+        >
+          <CloseIcon />
+        </IconButton>
+
+        <Box flex={1} sx={{ overflow: "hidden", height: "100%" }}>
+          {images.length === 1 ? (
+            <ImageWrapper>
+              <NextImage
+                {...formatDimensions(selectedImage, 1000)}
+                alt="modal-image"
+                placeholder={blurDataURL ? "blur" : "empty"}
+                blurDataURL={blurDataURL}
+              />
+            </ImageWrapper>
+          ) : (
+            <Carousel
+              autoPlay={false}
+              onChange={(index = 0) => onChangeImage(index)}
+              index={selectedImageIndex}
+              navButtonsAlwaysVisible
+              fullHeightHover={false}
+              sx={{
+                height: "100%",
+                color: "red",
+                display: "flex",
+                flexDirection: "column",
+                "& > *:first-of-type": {
+                  maxHeight: "100%",
+                  overflow: "hidden",
+                  flex: 1,
+                },
+              }}
+            >
+              {images.map((image) => (
+                <ImageWrapper key={image.src}>
+                  <NextImage
+                    {...formatDimensions(image, 1000)}
+                    alt="modal-image"
+                    placeholder={image.blurDataURL ? "blur" : "empty"}
+                    blurDataURL={image.blurDataURL}
+                  />
+                </ImageWrapper>
+              ))}
+            </Carousel>
+          )}
+        </Box>
+      </Box>
     </Modal>
   );
 };

@@ -10,7 +10,7 @@ import { Link as LinkMUI } from "@mui/material";
 interface SanityBlockContentProps {
   bodyRaw: any;
   altBase: string;
-  extraImages?: Image[];
+  extraImages?: Image[]; // * This is currently not used!
 }
 
 export const SanityBlockContent: React.FC<SanityBlockContentProps> = (

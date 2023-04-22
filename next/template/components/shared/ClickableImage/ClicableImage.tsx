@@ -35,6 +35,12 @@ export const ClickableImage = (props: Props) => {
         justifyContent: "center",
         alignItems: "center",
         position: "relative",
+        "& > *": {
+          maxWidth: "100%",
+          maxHeight: "100%",
+          height: "auto",
+          objectFit: "contain",
+        },
         "&:before": {
           content: "''",
           position: "absolute",
@@ -59,7 +65,7 @@ export const ClickableImage = (props: Props) => {
     >
       <NextImage
         {...formatDimensions(image, maxWidth)}
-        placeholder="blur"
+        placeholder={image.blurDataURL ? "blur" : "empty"}
         blurDataURL={image.blurDataURL}
         {...rest}
       />

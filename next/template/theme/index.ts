@@ -50,6 +50,13 @@ export const enrichedTheme = createTheme({
         },
       },
     },
+    MuiBackdrop: {
+      styleOverrides: {
+        root: {
+          background: "#000000eb", // black 0.92 opacity
+        },
+      },
+    },
     MuiLink: {
       styleOverrides: {
         root: {

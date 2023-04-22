@@ -1,8 +1,6 @@
-import { default as NextImage } from "next/image";
-import styles from "./ImageRenderer.module.css";
 import { Image } from "@template/types/image";
 import { formatBodyRawImage } from "@template/helpers/blockContent";
-import { formatDimensions } from "@template/helpers/image";
+import { ClickableImage } from "../ClickableImage";
 
 export interface ImageRendererProps {
   value: {
@@ -10,7 +8,7 @@ export interface ImageRendererProps {
       _ref: string;
     };
   };
-  onImageClick?: (image: Image) => void;
+  onImageClick: (image: Image) => void;
   alt: string;
 }
 
@@ -25,19 +23,14 @@ export const ImageRenderer: React.FC<ImageRendererProps> = (props) => {
 
   const image = formatBodyRawImage(_ref);
 
-  const blurDataURL = image?.blurDataURL;
-
   return (
-    <div className={styles.container}>
-      <div className="pulsePointer" style={{ display: "inline-block" }}>
-        <NextImage
-          {...formatDimensions(image)}
-          onClick={() => onImageClick && onImageClick(image)}
-          alt={alt}
-          placeholder={blurDataURL ? "blur" : "empty"}
-          blurDataURL={blurDataURL}
-        />
-      </div>
-    </div>
+    <ClickableImage
+      {...{
+        onImageClick,
+        image,
+        alt,
+        maxWidth: 550,
+      }}
+    />
   );
 };

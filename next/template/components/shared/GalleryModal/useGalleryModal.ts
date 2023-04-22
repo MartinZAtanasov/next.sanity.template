@@ -1,5 +1,5 @@
 import { Image } from "@template/types/image";
-import { useEffect, useState } from "react";
+import { useState } from "react";
 
 export const useGalleryModal = (images: Image[]) => {
   const [selectedImageIndex, setSelectedImageIndex] = useState(-1);
@@ -8,18 +8,12 @@ export const useGalleryModal = (images: Image[]) => {
     setSelectedImageIndex(images.findIndex(({ src }) => src === image.src));
 
   const onClose = () => setSelectedImageIndex(-1);
-  const onNextImage = () => setSelectedImageIndex((current) => ++current);
-  const onPrevImage = () => setSelectedImageIndex((current) => --current);
-
-  useEffect(() => {
-    document.body.style.overflow = selectedImageIndex > -1 ? "hidden" : "auto";
-  }, [selectedImageIndex]);
+  const onChangeImage = (index: number) => setSelectedImageIndex(index);
 
   return {
     onImageClick,
     selectedImageIndex,
     onClose,
-    onNextImage,
-    onPrevImage,
+    onChangeImage,
   };
 };
