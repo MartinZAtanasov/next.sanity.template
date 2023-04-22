@@ -16,12 +16,12 @@ export const GridContainer = ({ children, reverse }: Props) => {
         columnGap: LAYOUT.COL_GAP,
         rowGap: LAYOUT.ROW_GAP,
         alignItems: "center",
-        "& > *:first-child": {
+        "& > *:first-of-type": {
           order: reverse ? 2 : 0,
         },
         [mediaBreakPoint]: {
           gridTemplateColumns: "1fr",
-          "& > *:first-child": {
+          "& > *:first-of-type": {
             order: 0,
           },
         },

@@ -11,7 +11,7 @@ import { ClickableImage } from "@template/components/shared/ClickableImage";
 
 export interface ImageSectionProps {
   title: string;
-  subtitle: string;
+  subtitle?: string;
   image: Image;
   bodyRaw: any;
   isImageRight: boolean;

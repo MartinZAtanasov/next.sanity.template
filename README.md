@@ -23,9 +23,7 @@
 
 <!-- TODO -->
 
-1. Convert to MUI
+1. Side image section
+2. SEO
 
-- theme
-- components
-
-2. Add more sections
+3. SanityBlockContent doesn't style other elements like - em, strong, list
