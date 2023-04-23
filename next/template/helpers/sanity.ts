@@ -1,7 +1,8 @@
-import { ImageSectionProps } from '../components/sections/ImageSection';
-import { LabelImage } from '../types/labelImage';
-import { SECTION_TYPE_NAMES } from '../types/sections';
-import { formatSanityImage } from './image';
+import { ImageSectionProps } from "../components/sections/ImageSection";
+import { SideImageSectionProps } from "../components/sections/SideImageSection";
+import { LabelImage } from "../types/labelImage";
+import { SECTION_TYPE_NAMES } from "../types/sections";
+import { formatSanityImage } from "./image";
 
 const {
   BACKGROUND_IMAGE_SECTION,
@@ -38,18 +39,18 @@ const formatImageSectionData = (imageSection: any): ImageSectionProps => {
 //   return iconsSectionCopy;
 // };
 
-// const formatSideImageSectionData = (
-//   sideImageSection: any
-// ): SideImageSectionProps => {
-//   const sideImageSectionCopy = { ...sideImageSection };
-//   sideImageSectionCopy.sideImage = formatSanityImage(
-//     sideImageSectionCopy.sideImage
-//   );
-//   sideImageSectionCopy.otherImages =
-//     sideImageSectionCopy.otherImages.map(formatSanityImage);
+const formatSideImageSectionData = (
+  sideImageSection: any
+): SideImageSectionProps => {
+  const sideImageSectionCopy = { ...sideImageSection };
+  sideImageSectionCopy.sideImage = formatSanityImage(
+    sideImageSectionCopy.sideImage
+  );
+  sideImageSectionCopy.otherImages =
+    sideImageSectionCopy.otherImages.map(formatSanityImage);
 
-//   return sideImageSectionCopy;
-// };
+  return sideImageSectionCopy;
+};
 
 // const formatBackgroundImageSectionData = (
 //   backgroundImageSection: any
@@ -77,8 +78,8 @@ export const formatSectionsData = (sections: any[]) =>
       //   case ICONS_SECTION:
       //     return formatIconsSectionData(section);
 
-      //   case SIDE_IMAGE_SECTION:
-      //     return formatSideImageSectionData(section);
+      case SIDE_IMAGE_SECTION:
+        return formatSideImageSectionData(section);
 
       //   case BACKGROUND_IMAGE_SECTION:
       //     return formatBackgroundImageSectionData(section);

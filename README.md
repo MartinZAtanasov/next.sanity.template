@@ -23,7 +23,6 @@
 
 <!-- TODO -->
 
-1. Side image section
-2. SEO
+1. Double columns section
 
-3. SanityBlockContent doesn't style other elements like - em, strong, list
+2. .... SanityBlockContent doesn't style other elements like - em, strong, list

@@ -1,3 +1,5 @@
+import {Rule} from 'sanity'
+
 export const sideImageSection = {
   name: 'sideImageSection',
   title: 'Side Image Section',
@@ -5,8 +7,9 @@ export const sideImageSection = {
   fields: [
     {
       name: 'title',
-      title: 'Title',
+      title: 'Title*',
       type: 'string',
+      validation: (Rule: Rule) => Rule.required(),
     },
     {
       name: 'subtitle',
@@ -15,22 +18,26 @@ export const sideImageSection = {
     },
     {
       name: 'body',
-      title: 'Text Body',
+      title: 'Text body*',
       type: 'blockContent',
+      validation: (Rule: Rule) => Rule.required(),
     },
     {
       name: 'sideImage',
-      title: 'Side image',
+      title: 'Side image*',
       type: 'image',
       options: {
         hotspot: true,
       },
+      validation: (Rule: Rule) => Rule.required(),
     },
     {
       name: 'otherImages',
-      title: 'Other Images',
+      title: 'Other images*',
       type: 'array',
       of: [{type: 'image', options: {hotspot: true}}],
+      description: 'Will be shown above the text body. Must be one or two items.',
+      validation: (Rule: Rule) => Rule.required().max(2),
     },
   ],
 }

@@ -3,6 +3,10 @@ import { SECTION_TYPE_NAMES } from "../../types/sections";
 import { ImageSection, ImageSectionProps } from "../sections/ImageSection";
 import { SEO } from "./SEO";
 import { Slug } from "../../types/slug";
+import {
+  SideImageSection,
+  SideImageSectionProps,
+} from "../sections/SideImageSection";
 
 const {
   IMAGE_SECTION,
@@ -36,6 +40,13 @@ export const Page: React.FC<PageProps> = (props) => {
             return (
               <ImageSection
                 {...{ ...(section as ImageSectionProps), key, altBase }}
+              />
+            );
+
+          case SIDE_IMAGE_SECTION:
+            return (
+              <SideImageSection
+                {...{ ...(section as SideImageSectionProps), key, altBase }}
               />
             );
 
