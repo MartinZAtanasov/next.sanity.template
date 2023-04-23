@@ -23,6 +23,6 @@
 
 <!-- TODO -->
 
-1. Double columns section
+1. Icons section
 
 2. .... SanityBlockContent doesn't style other elements like - em, strong, list

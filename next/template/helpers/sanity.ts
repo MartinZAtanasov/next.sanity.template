@@ -1,3 +1,4 @@
+import { DoubleColumnsTextSectionProps } from "../components/sections/DoubleColumnsTextSection";
 import { ImageSectionProps } from "../components/sections/ImageSection";
 import { SideImageSectionProps } from "../components/sections/SideImageSection";
 import { LabelImage } from "../types/labelImage";
@@ -19,12 +20,12 @@ const formatImageSectionData = (imageSection: any): ImageSectionProps => {
   return imageSectionCopy;
 };
 
-// export const formatDoubleColumnsTextSectionData = (
-//   doubleColumnsTextSection: any
-// ): DoubleColumnsTextSectionProps => ({
-//   ...doubleColumnsTextSection,
-//   images: doubleColumnsTextSection.images.map(formatSanityImage),
-// });
+export const formatDoubleColumnsTextSectionData = (
+  doubleColumnsTextSection: any
+): DoubleColumnsTextSectionProps => ({
+  ...doubleColumnsTextSection,
+  images: doubleColumnsTextSection.images.map(formatSanityImage),
+});
 
 // const formatIconsSectionData = (iconsSection: any): IconsSectionProps => {
 //   const iconsSectionCopy = { ...iconsSection };
@@ -72,8 +73,8 @@ export const formatSectionsData = (sections: any[]) =>
       case IMAGE_SECTION:
         return formatImageSectionData(section);
 
-      //   case DOUBLE_COLUMNS_TEXT_SECTION:
-      //     return formatDoubleColumnsTextSectionData(section);
+      case DOUBLE_COLUMNS_TEXT_SECTION:
+        return formatDoubleColumnsTextSectionData(section);
 
       //   case ICONS_SECTION:
       //     return formatIconsSectionData(section);

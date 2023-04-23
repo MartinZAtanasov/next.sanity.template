@@ -18,9 +18,9 @@ export interface ImageSectionProps {
 }
 
 // * Half of layout max width
-const imageMaxWidth = +(+LAYOUT.MAX_WIDTH.replace("px", "") / 2).toFixed(2);
+const imageMaxWidth = +(+LAYOUT.MAX_WIDTH.replace("px", "") / 2).toFixed();
 
-export const ImageSection: React.FC<ImageSectionProps> = (props) => {
+export const ImageSection = (props: ImageSectionProps) => {
   const { title, subtitle, image, bodyRaw, isImageRight, altBase } = props;
 
   const { onImageClick, ...galleryModalProps } = useGalleryModal([image]);

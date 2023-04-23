@@ -18,14 +18,14 @@ export interface SideImageSectionProps {
 }
 
 // * Half of layout max width
-const sideImageMaxWidth = +(+LAYOUT.MAX_WIDTH.replace("px", "") / 2).toFixed(2);
+const sideImageMaxWidth = +(+LAYOUT.MAX_WIDTH.replace("px", "") / 2).toFixed();
 // * 4th of layout max width
 const otherImageMaxWidth = +(
   sideImageMaxWidth / 2 -
   +LAYOUT.SPACING_XS.replace("px", "") * 2
-).toFixed(2);
+).toFixed();
 
-export const SideImageSection: React.FC<SideImageSectionProps> = (props) => {
+export const SideImageSection = (props: SideImageSectionProps) => {
   const { title, subtitle, sideImage, bodyRaw, otherImages, altBase } = props;
 
   const { onImageClick, ...galleryModalProps } = useGalleryModal([

@@ -7,6 +7,10 @@ import {
   SideImageSection,
   SideImageSectionProps,
 } from "../sections/SideImageSection";
+import {
+  DoubleColumnsTextSection,
+  DoubleColumnsTextSectionProps,
+} from "../sections/DoubleColumnsTextSection";
 
 const {
   IMAGE_SECTION,
@@ -47,6 +51,17 @@ export const Page: React.FC<PageProps> = (props) => {
             return (
               <SideImageSection
                 {...{ ...(section as SideImageSectionProps), key, altBase }}
+              />
+            );
+
+          case DOUBLE_COLUMNS_TEXT_SECTION:
+            return (
+              <DoubleColumnsTextSection
+                {...{
+                  ...(section as DoubleColumnsTextSectionProps),
+                  key,
+                  altBase,
+                }}
               />
             );
 

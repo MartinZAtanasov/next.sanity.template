@@ -32,7 +32,7 @@ export const imageSection = {
       name: 'isImageRight',
       title: 'Image in right',
       type: 'boolean',
-      description: 'Image can be in left or right',
+      description: 'Image can be in left or right.',
       initialValue: true,
       options: {
         layout: 'checkbox',

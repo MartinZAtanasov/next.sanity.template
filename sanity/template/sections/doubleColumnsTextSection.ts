@@ -1,3 +1,5 @@
+import {Rule} from 'sanity'
+
 export const doubleColumnsTextSection = {
   name: 'doubleColumnsTextSection',
   title: 'Double Columns Text Section',
@@ -5,7 +7,7 @@ export const doubleColumnsTextSection = {
   fields: [
     {
       name: 'title',
-      title: 'Title',
+      title: 'Title*',
       type: 'string',
     },
     {
@@ -15,29 +17,21 @@ export const doubleColumnsTextSection = {
     },
     {
       name: 'body1',
-      title: 'Text Body 1',
+      title: 'Text body left*',
       type: 'blockContent',
     },
     {
       name: 'body2',
-      title: 'Text Body 2',
+      title: 'Text body right*',
       type: 'blockContent',
     },
     {
       name: 'images',
-      title: 'Images',
+      title: 'Images*',
       type: 'array',
-      of: [{ type: 'image', options: { hotspot: true } }],
-    },
-    {
-      name: 'buttonText',
-      title: 'Button Text',
-      type: 'string',
-    },
-    {
-      name: 'buttonNavigatesTo',
-      title: 'Button Navigates To',
-      type: 'string',
+      of: [{type: 'image', options: {hotspot: true}}],
+      validation: (Rule: Rule) => Rule.required().min(2).max(4),
+      description: 'Minimum of two and maximum of four images.',
     },
   ],
-};
+}

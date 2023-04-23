@@ -5,7 +5,7 @@ import { mediaBreakPoint } from "../../../theme";
 
 const { SPACING_XL, SPACING_S, MAX_WIDTH, SPACING_XL_MOBILE } = LAYOUT;
 
-export const Section: React.FC<PropsWithChildren> = ({ children }) => (
+export const Section = ({ children }: PropsWithChildren) => (
   <Box
     sx={{
       padding: `${SPACING_XL} ${SPACING_S}`,

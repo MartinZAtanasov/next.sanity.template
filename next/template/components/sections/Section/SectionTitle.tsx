@@ -7,7 +7,7 @@ interface SectionTitleProps {
   center?: boolean;
 }
 
-export const SectionTitle: React.FC<SectionTitleProps> = (props) => {
+export const SectionTitle = (props: SectionTitleProps) => {
   const { title, gutterBottom, subtitle, center } = props;
 
   return (
