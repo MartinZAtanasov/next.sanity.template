@@ -74,7 +74,7 @@ export const GalleryModal: React.FC<GalleryModalProps> = (props) => {
           {images.length === 1 ? (
             <ImageWrapper>
               <NextImage
-                {...formatDimensions(selectedImage, 1000)}
+                {...formatDimensions(selectedImage)}
                 alt="modal-image"
                 placeholder={blurDataURL ? "blur" : "empty"}
                 blurDataURL={blurDataURL}
@@ -102,7 +102,7 @@ export const GalleryModal: React.FC<GalleryModalProps> = (props) => {
               {images.map((image) => (
                 <ImageWrapper key={image.src}>
                   <NextImage
-                    {...formatDimensions(image, 1000)}
+                    {...formatDimensions(image)}
                     alt="modal-image"
                     placeholder={image.blurDataURL ? "blur" : "empty"}
                     blurDataURL={image.blurDataURL}

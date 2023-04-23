@@ -5,6 +5,7 @@ import { GridContainer } from "../..//shared/GridContainer";
 import { Box } from "@mui/material";
 import { ClickableImage } from "../..//shared/ClickableImage";
 import { Image } from "../../../types/image";
+import { LAYOUT } from "../../../theme/constants";
 
 export interface ImageSectionProps {
   title: string;
@@ -15,6 +16,9 @@ export interface ImageSectionProps {
   altBase: string;
   __typename: string;
 }
+
+// * Half of layout max width
+const imageMaxWidth = +(+LAYOUT.MAX_WIDTH.replace("px", "") / 2).toFixed(2);
 
 export const ImageSection: React.FC<ImageSectionProps> = (props) => {
   const { title, subtitle, image, bodyRaw, isImageRight, altBase } = props;
@@ -35,7 +39,7 @@ export const ImageSection: React.FC<ImageSectionProps> = (props) => {
               onImageClick,
               image,
               alt: `${altBase} - ${title}`,
-              maxWidth: 550,
+              maxWidth: imageMaxWidth,
             }}
           />
         </GridContainer>

@@ -1,6 +1,7 @@
+import { LAYOUT } from "../theme/constants";
 import { Image, SanityImage } from "../types/image";
 
-const DEFAULT_MAX_WIDTH = 1000;
+const DEFAULT_MAX_WIDTH = +LAYOUT.MAX_WIDTH.replace("px", "");
 
 export const formatDimensions = (image: Image, maxWidth?: number) => {
   const limitWidth = maxWidth || DEFAULT_MAX_WIDTH;

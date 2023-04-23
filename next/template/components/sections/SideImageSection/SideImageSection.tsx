@@ -17,6 +17,14 @@ export interface SideImageSectionProps {
   __typename: string;
 }
 
+// * Half of layout max width
+const sideImageMaxWidth = +(+LAYOUT.MAX_WIDTH.replace("px", "") / 2).toFixed(2);
+// * 4th of layout max width
+const otherImageMaxWidth = +(
+  sideImageMaxWidth / 2 -
+  +LAYOUT.SPACING_XS.replace("px", "") * 2
+).toFixed(2);
+
 export const SideImageSection: React.FC<SideImageSectionProps> = (props) => {
   const { title, subtitle, sideImage, bodyRaw, otherImages, altBase } = props;
 
@@ -40,7 +48,7 @@ export const SideImageSection: React.FC<SideImageSectionProps> = (props) => {
                     image,
                     onImageClick,
                     alt: `${altBase} - ${title}-${i + 1}`,
-                    maxWidth: 250,
+                    maxWidth: otherImageMaxWidth,
                   }}
                 />
               ))}
@@ -53,7 +61,7 @@ export const SideImageSection: React.FC<SideImageSectionProps> = (props) => {
               image: sideImage,
               onImageClick,
               alt: `${altBase} - ${title}`,
-              maxWidth: 800,
+              maxWidth: sideImageMaxWidth,
             }}
           />
         </GridContainer>
