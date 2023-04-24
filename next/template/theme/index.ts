@@ -67,5 +67,16 @@ export const enrichedTheme = createTheme({
         underline: "hover",
       },
     },
+    MuiListItemText: {
+      styleOverrides: {
+        primary: {
+          fontFamily: "var(--primary-font-family)",
+          fontSize: "20px",
+          [mediaBreakPoint]: {
+            fontSize: "18px",
+          },
+        },
+      },
+    },
   },
 });

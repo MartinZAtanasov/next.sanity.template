@@ -31,7 +31,7 @@ export const doubleColumnsTextSection = {
       type: 'array',
       of: [{type: 'image', options: {hotspot: true}}],
       validation: (Rule: Rule) => Rule.required().min(2).max(4),
-      description: 'Minimum of two and maximum of four images.',
+      description: 'Minimum of 2 and maximum of 4 images.',
     },
   ],
 }

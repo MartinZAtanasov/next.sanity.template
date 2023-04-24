@@ -12,6 +12,7 @@ const {
   IMAGE_SECTION,
   SIDE_IMAGE_SECTION,
   TEXT_SECTION,
+  LIST_SECTION,
 } = SECTION_TYPE_NAMES;
 
 const formatImageSectionData = (imageSection: any): ImageSectionProps => {
@@ -86,6 +87,9 @@ export const formatSectionsData = (sections: any[]) =>
       //     return formatBackgroundImageSectionData(section);
 
       case TEXT_SECTION:
+        return section;
+
+      case LIST_SECTION:
         return section;
 
       default:

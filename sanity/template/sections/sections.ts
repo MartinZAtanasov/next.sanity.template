@@ -8,13 +8,15 @@ export const sections = {
       title: 'Sections',
       type: 'array',
       of: [
-        { type: 'doubleColumnsTextSection' },
-        { type: 'iconsSection' },
-        { type: 'imageSection' },
-        { type: 'sideImageSection' },
-        { type: 'backgroundImageSection' },
-        { type: 'textSection' },
+        {type: 'imageSection'},
+        {type: 'doubleColumnsTextSection'},
+        {type: 'listSection'},
+        {type: 'sideImageSection'},
+
+        {type: 'iconsSection'},
+        {type: 'backgroundImageSection'},
+        {type: 'textSection'},
       ],
     },
   ],
-};
+}

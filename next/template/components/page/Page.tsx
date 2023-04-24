@@ -11,6 +11,7 @@ import {
   DoubleColumnsTextSection,
   DoubleColumnsTextSectionProps,
 } from "../sections/DoubleColumnsTextSection";
+import { ListSection, ListSectionProps } from "../sections/ListSection";
 
 const {
   IMAGE_SECTION,
@@ -19,6 +20,7 @@ const {
   SIDE_IMAGE_SECTION,
   BACKGROUND_IMAGE_SECTION,
   TEXT_SECTION,
+  LIST_SECTION,
 } = SECTION_TYPE_NAMES;
 
 export interface PageProps {
@@ -61,6 +63,16 @@ export const Page: React.FC<PageProps> = (props) => {
                   ...(section as DoubleColumnsTextSectionProps),
                   key,
                   altBase,
+                }}
+              />
+            );
+
+          case LIST_SECTION:
+            return (
+              <ListSection
+                {...{
+                  ...(section as ListSectionProps),
+                  key,
                 }}
               />
             );

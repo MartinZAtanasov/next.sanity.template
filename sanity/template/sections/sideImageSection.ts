@@ -36,7 +36,7 @@ export const sideImageSection = {
       title: 'Other images*',
       type: 'array',
       of: [{type: 'image', options: {hotspot: true}}],
-      description: 'Will be shown above the text body. Must be one or two items.',
+      description: 'Will be shown above the text body. Must be 1 or 2 items.',
       validation: (Rule: Rule) => Rule.required().max(2),
     },
   ],
