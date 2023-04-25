@@ -23,5 +23,13 @@ export const seo = {
       type: 'string',
       validation: (Rule: Rule) => Rule.required(),
     },
+    {
+      name: 'image',
+      title: 'Image*',
+      type: 'image',
+      description:
+        'This will be shown when you share this page link. Advisable aspect ration is 2:1 width to height',
+      validation: (Rule: Rule) => Rule.required(),
+    },
   ],
 }
