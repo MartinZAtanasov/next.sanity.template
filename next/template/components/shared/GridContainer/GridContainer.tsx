@@ -6,14 +6,17 @@ import { mediaBreakPoint } from "../../../theme";
 
 interface Props extends PropsWithChildren {
   reverse?: boolean;
+  gridTemplateColumns?: string;
 }
 
-export const GridContainer = ({ children, reverse }: Props) => {
+export const GridContainer = (props: Props) => {
+  const { children, reverse, gridTemplateColumns } = props;
+
   return (
     <Box
       sx={{
         display: "grid",
-        gridTemplateColumns: "1fr 1fr",
+        gridTemplateColumns: gridTemplateColumns || "1fr 1fr",
         columnGap: LAYOUT.COL_GAP,
         rowGap: LAYOUT.ROW_GAP,
         alignItems: "center",

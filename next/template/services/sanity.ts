@@ -1,19 +1,35 @@
 import { apolloClient } from "../apolloClient";
-import { PAGE_QUERY } from "../graphql/queries/page";
-import { formatSectionsData } from "../helpers/sanity";
+import { PAGE_QUERY, POST_CATEGORY_PAGE_QUERY } from "../graphql/queries/page";
+import {
+  buildPostCategoriesSection,
+  formatSectionsData,
+} from "../helpers/sanity";
 
-export const fetchPageData = async (pageSlug: string) => {
+interface FetchPageDataProps {
+  pageSlug: string;
+  isPostCategory?: boolean;
+}
+
+export const fetchPageData = async (props: FetchPageDataProps) => {
+  const { pageSlug, isPostCategory } = props;
+
   const res = await apolloClient?.query({
-    query: PAGE_QUERY,
+    query: isPostCategory ? POST_CATEGORY_PAGE_QUERY : PAGE_QUERY,
     variables: { pageSlug },
   });
 
   const pageDataResponse = res?.data?.allPage?.[0];
 
+  const rawSections = pageDataResponse?.sections?.sections || [];
+
+  if (isPostCategory) {
+    rawSections.unshift(buildPostCategoriesSection(res?.data?.allPost || []));
+  }
+
   const pageData = {
     ...pageDataResponse,
-    sections: formatSectionsData(pageDataResponse?.sections?.sections || []),
+    sections: formatSectionsData(rawSections),
   };
 
-  return { pageData, unformattedData: { ...res?.data } };
+  return { pageData, rawData: { ...res?.data } };
 };

@@ -28,6 +28,12 @@ export const enrichedTheme = createTheme({
         marginBottom: LAYOUT.SPACING_L_MOBILE,
       },
     },
+    h3: {
+      fontFamily: "var(--primary-font-family)",
+      color: PALETTE.TEXT_PRIMARY,
+      fontSize: "28px",
+      fontWeight: "bold",
+    },
     body1: {
       fontFamily: "var(--secondary-font-family)",
       fontSize: "18px",

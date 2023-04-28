@@ -1,72 +1,48 @@
 import { DoubleColumnsTextSectionProps } from "../components/sections/DoubleColumnsTextSection";
 import { ImageSectionProps } from "../components/sections/ImageSection";
+import { PostCategoriesSectionProps } from "../components/sections/PostCategoriesSection";
 import { SideImageSectionProps } from "../components/sections/SideImageSection";
-import { LabelImage } from "../types/labelImage";
 import { SECTION_TYPE_NAMES } from "../types/sections";
 import { formatSanityImage } from "./image";
 
 const {
-  BACKGROUND_IMAGE_SECTION,
   DOUBLE_COLUMNS_TEXT_SECTION,
-  ICONS_SECTION,
   IMAGE_SECTION,
   SIDE_IMAGE_SECTION,
   TEXT_SECTION,
   LIST_SECTION,
+  POST_CATEGORIES_SECTION,
 } = SECTION_TYPE_NAMES;
 
-const formatImageSectionData = (imageSection: any): ImageSectionProps => {
-  const imageSectionCopy = { ...imageSection };
-  imageSectionCopy.image = formatSanityImage(imageSectionCopy.image);
-  return imageSectionCopy;
-};
+const formatImageSectionData = (imageSection: any): ImageSectionProps => ({
+  ...imageSection,
+  image: formatSanityImage(imageSection.image),
+});
 
-export const formatDoubleColumnsTextSectionData = (
+const formatPostCategoriesSection = (
+  postCategoriesSection: any
+): PostCategoriesSectionProps => ({
+  ...postCategoriesSection,
+  posts: postCategoriesSection.posts.map((v: any) => ({
+    ...v,
+    image: formatSanityImage(v.image),
+  })),
+});
+
+const formatDoubleColumnsTextSectionData = (
   doubleColumnsTextSection: any
 ): DoubleColumnsTextSectionProps => ({
   ...doubleColumnsTextSection,
   images: doubleColumnsTextSection.images.map(formatSanityImage),
 });
 
-// const formatIconsSectionData = (iconsSection: any): IconsSectionProps => {
-//   const iconsSectionCopy = { ...iconsSection };
-//   iconsSectionCopy.icons = iconsSectionCopy.iconsTitles.map(
-//     ({ label, image }: LabelImage) => ({
-//       title: label,
-//       image: formatSanityImage(image),
-//     })
-//   );
-//   delete iconsSectionCopy.iconsTitles;
-
-//   return iconsSectionCopy;
-// };
-
 const formatSideImageSectionData = (
   sideImageSection: any
-): SideImageSectionProps => {
-  const sideImageSectionCopy = { ...sideImageSection };
-  sideImageSectionCopy.sideImage = formatSanityImage(
-    sideImageSectionCopy.sideImage
-  );
-  sideImageSectionCopy.otherImages =
-    sideImageSectionCopy.otherImages.map(formatSanityImage);
-
-  return sideImageSectionCopy;
-};
-
-// const formatBackgroundImageSectionData = (
-//   backgroundImageSection: any
-// ): BackgroundImageSectionProps => {
-//   const backgroundImageSectionCopy = { ...backgroundImageSection };
-//   backgroundImageSectionCopy.image = formatSanityImage(
-//     backgroundImageSectionCopy.image
-//   );
-//   backgroundImageSectionCopy.icon =
-//     backgroundImageSectionCopy.icon &&
-//     formatSanityImage(backgroundImageSectionCopy.icon);
-
-//   return backgroundImageSectionCopy;
-// };
+): SideImageSectionProps => ({
+  ...sideImageSection,
+  sideImage: formatSanityImage(sideImageSection.sideImage),
+  otherImages: sideImageSection.otherImages.map(formatSanityImage),
+});
 
 export const formatSectionsData = (sections: any[]) =>
   sections?.map((section: any) => {
@@ -77,14 +53,11 @@ export const formatSectionsData = (sections: any[]) =>
       case DOUBLE_COLUMNS_TEXT_SECTION:
         return formatDoubleColumnsTextSectionData(section);
 
-      //   case ICONS_SECTION:
-      //     return formatIconsSectionData(section);
-
       case SIDE_IMAGE_SECTION:
         return formatSideImageSectionData(section);
 
-      //   case BACKGROUND_IMAGE_SECTION:
-      //     return formatBackgroundImageSectionData(section);
+      case POST_CATEGORIES_SECTION:
+        return formatPostCategoriesSection(section);
 
       case TEXT_SECTION:
         return section;
@@ -96,3 +69,8 @@ export const formatSectionsData = (sections: any[]) =>
         return {};
     }
   });
+
+export const buildPostCategoriesSection = (posts: any[]) => ({
+  __typename: POST_CATEGORIES_SECTION,
+  posts,
+});

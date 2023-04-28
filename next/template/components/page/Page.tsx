@@ -12,15 +12,17 @@ import {
   DoubleColumnsTextSectionProps,
 } from "../sections/DoubleColumnsTextSection";
 import { ListSection, ListSectionProps } from "../sections/ListSection";
+import {
+  PostCategoriesSection,
+  PostCategoriesSectionProps,
+} from "../sections/PostCategoriesSection";
 
 const {
   IMAGE_SECTION,
   DOUBLE_COLUMNS_TEXT_SECTION,
-  ICONS_SECTION,
   SIDE_IMAGE_SECTION,
-  BACKGROUND_IMAGE_SECTION,
-  TEXT_SECTION,
   LIST_SECTION,
+  POST_CATEGORIES_SECTION,
 } = SECTION_TYPE_NAMES;
 
 export interface PageProps {
@@ -29,7 +31,6 @@ export interface PageProps {
   sections: { __typename: string }[];
 }
 
-// TODO: Dynamic image on page link share
 export const Page: React.FC<PageProps> = (props) => {
   const { sections = [], seo, slug } = props;
 
@@ -72,6 +73,17 @@ export const Page: React.FC<PageProps> = (props) => {
               <ListSection
                 {...{
                   ...(section as ListSectionProps),
+                  key,
+                }}
+              />
+            );
+
+          case POST_CATEGORIES_SECTION:
+            return (
+              <PostCategoriesSection
+                {...{
+                  ...(section as PostCategoriesSectionProps),
+                  altBase,
                   key,
                 }}
               />
