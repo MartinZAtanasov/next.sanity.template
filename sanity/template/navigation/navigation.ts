@@ -20,7 +20,7 @@ export const navigation = {
     },
     {
       name: 'contacts',
-      tile: 'Contacts*',
+      title: 'Contacts*',
       type: 'array',
       of: [
         {

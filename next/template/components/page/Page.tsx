@@ -21,6 +21,10 @@ import {
   PersonalityCultHeroSectionProps,
 } from "../sections/PersonalityCultHeroSection";
 import { Navigation, NavigationProps } from "./Navigation";
+import {
+  ShortHeroSection,
+  ShortHeroSectionProps,
+} from "../sections/ShortHeroSection";
 
 const {
   IMAGE_SECTION,
@@ -29,6 +33,7 @@ const {
   LIST_SECTION,
   POST_CATEGORIES_SECTION,
   PERSONALITY_CULT_HERO_SECTION,
+  SHORT_HERO_SECTION,
 } = SECTION_TYPE_NAMES;
 
 export interface PageProps {
@@ -104,6 +109,16 @@ export const Page: React.FC<PageProps> = (props) => {
                 {...{
                   ...(section as PersonalityCultHeroSectionProps),
                   altBase,
+                  key,
+                }}
+              />
+            );
+
+          case SHORT_HERO_SECTION:
+            return (
+              <ShortHeroSection
+                {...{
+                  ...(section as ShortHeroSectionProps),
                   key,
                 }}
               />

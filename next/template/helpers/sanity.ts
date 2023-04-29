@@ -15,6 +15,7 @@ const {
   LIST_SECTION,
   POST_CATEGORIES_SECTION,
   PERSONALITY_CULT_HERO_SECTION,
+  SHORT_HERO_SECTION,
 } = SECTION_TYPE_NAMES;
 
 const formatImageSectionData = (imageSection: any): ImageSectionProps => ({
@@ -76,6 +77,9 @@ export const formatSectionsData = (sections: any[]) =>
         return section;
 
       case LIST_SECTION:
+        return section;
+
+      case SHORT_HERO_SECTION:
         return section;
 
       default:

@@ -17,6 +17,7 @@ import {post} from './post/post'
 import {personalityCultHeroSection} from './sections/personalityCultHeroSection'
 import {pageLink} from './util/pageLink'
 import {navigation} from './navigation/navigation'
+import {shortHeroSection} from './sections/shortHeroSection'
 
 export const sanitySchemas = [
   blockContent,
@@ -38,4 +39,5 @@ export const sanitySchemas = [
   post,
   pageLink,
   navigation,
+  shortHeroSection,
 ]

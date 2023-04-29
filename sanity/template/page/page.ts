@@ -37,6 +37,7 @@ export const page = {
       name: 'sections',
       title: 'Sections*',
       type: 'sections',
+      validation: (Rule: Rule) => Rule.required(),
     },
   ],
 }

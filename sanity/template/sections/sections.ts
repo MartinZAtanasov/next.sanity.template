@@ -13,6 +13,7 @@ export const sections = {
         {type: 'listSection'},
         {type: 'sideImageSection'},
         {type: 'personalityCultHeroSection'},
+        {type: 'shortHeroSection'},
 
         {type: 'iconsSection'},
         {type: 'backgroundImageSection'},

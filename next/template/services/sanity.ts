@@ -5,6 +5,7 @@ import {
   formatNavigationData,
   formatSectionsData,
 } from "../helpers/sanity";
+import { SECTION_TYPE_NAMES } from "../types/sections";
 
 interface FetchPageDataProps {
   pageSlug: string;
@@ -41,10 +42,17 @@ export const fetchPostCategoryPageData = async (props: FetchPageDataProps) => {
 
   const pageDataResponse = res?.data?.allPage?.[0];
   const navigationDataResponse = res?.data?.allNavigation?.[0];
+  const rawSections = [...(pageDataResponse?.sections?.sections || [])];
 
-  const rawSections = pageDataResponse?.sections?.sections || [];
+  const shouldInsertSecond =
+    !rawSections.length ||
+    rawSections[0].__typename === SECTION_TYPE_NAMES.SHORT_HERO_SECTION;
 
-  rawSections.unshift(buildPostCategoriesSection(res?.data?.allPost || []));
+  const postCategoriesSection = buildPostCategoriesSection(
+    res?.data?.allPost || []
+  );
+
+  rawSections.splice(shouldInsertSecond ? 1 : 0, 0, postCategoriesSection);
 
   const pageData = {
     ...pageDataResponse,

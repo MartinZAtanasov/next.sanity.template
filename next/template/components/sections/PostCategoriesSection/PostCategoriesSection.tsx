@@ -22,7 +22,7 @@ export const PostCategoriesSection = (props: PostCategoriesSectionProps) => {
 
   return (
     <Section>
-      {[...posts, ...posts, ...posts, ...posts].map((post, i, arr) => (
+      {posts.map((post, i, arr) => (
         <Box
           key={post.slug.current}
           sx={{

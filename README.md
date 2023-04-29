@@ -23,7 +23,5 @@
 
 <!-- TODO -->
 
-1. Icons section ?
-2. Should remove the default <p> margin/padding
-3. Validate that textContent images doesn't have blur prop on them
-4. .... SanityBlockContent doesn't style other elements like - em, strong, list
+1. .... SanityBlockContent doesn't style other elements like - em, strong, list
+2. font initial flickering

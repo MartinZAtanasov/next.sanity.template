@@ -34,7 +34,8 @@ export const PersonalityCultHeroSection = (
           padding: `${0} ${LAYOUT.SPACING_S}`,
           background: (theme) => theme.palette.background.default,
           [mediaBreakPoint]: {
-            padding: `${0} ${LAYOUT.SPACING_S}`,
+            padding: `0 ${LAYOUT.SPACING_S}`,
+            paddingTop: LAYOUT.SPACING_XL_MOBILE,
           },
         }}
       >
