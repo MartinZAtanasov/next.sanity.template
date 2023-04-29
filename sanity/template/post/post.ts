@@ -22,7 +22,8 @@ export const post = {
           const isValid = /^\/(?:[\w-]+\/)*[\w-]*$/.test(value.current || '')
           return isValid || 'Not a valid slug'
         }),
-      description: 'Must be unique between all posts. Examples: `/my-post-1`, `/my-post-2`.',
+      description:
+        'Must be unique between all posts. Examples: `/blog/my-post-1`, `/blog/my-post-2`.',
     },
     {
       name: 'image',
@@ -32,13 +33,17 @@ export const post = {
       validation: (Rule: Rule) => Rule.required(),
     },
     {
+      name: 'introduction',
+      title: 'Introduction',
+      type: 'blockContent',
+      description: 'Will be shown below the hero section.',
+      validation: (Rule: Rule) => Rule.required(),
+    },
+    {
       name: 'excerpt',
       title: 'Excerpt',
       type: 'blockContent',
-      options: {
-        source: 'title',
-        maxLength: 96,
-      },
+      validation: (Rule: Rule) => Rule.required(),
     },
     {
       name: 'seo',

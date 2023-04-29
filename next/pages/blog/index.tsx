@@ -1,9 +1,8 @@
-import { Page, PageProps, fetchPageData } from "../../template";
+import { Page, PageProps, fetchPostCategoryPageData } from "../../template";
 
 export const getServerSideProps = async () => {
-  const { pageData, ...rest } = await fetchPageData({
+  const { pageData, ...rest } = await fetchPostCategoryPageData({
     pageSlug: "/blog",
-    isPostCategory: true,
   });
 
   return {

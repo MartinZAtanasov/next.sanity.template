@@ -7,14 +7,32 @@ import {
 
 interface FetchPageDataProps {
   pageSlug: string;
-  isPostCategory?: boolean;
 }
 
 export const fetchPageData = async (props: FetchPageDataProps) => {
-  const { pageSlug, isPostCategory } = props;
+  const { pageSlug } = props;
 
   const res = await apolloClient?.query({
-    query: isPostCategory ? POST_CATEGORY_PAGE_QUERY : PAGE_QUERY,
+    query: PAGE_QUERY,
+    variables: { pageSlug },
+  });
+
+  const pageDataResponse = res?.data?.allPage?.[0];
+  const rawSections = pageDataResponse?.sections?.sections || [];
+
+  const pageData = {
+    ...pageDataResponse,
+    sections: formatSectionsData(rawSections),
+  };
+
+  return { pageData, rawData: { ...res?.data } };
+};
+
+export const fetchPostCategoryPageData = async (props: FetchPageDataProps) => {
+  const { pageSlug } = props;
+
+  const res = await apolloClient?.query({
+    query: POST_CATEGORY_PAGE_QUERY,
     variables: { pageSlug },
   });
 
@@ -22,9 +40,7 @@ export const fetchPageData = async (props: FetchPageDataProps) => {
 
   const rawSections = pageDataResponse?.sections?.sections || [];
 
-  if (isPostCategory) {
-    rawSections.unshift(buildPostCategoriesSection(res?.data?.allPost || []));
-  }
+  rawSections.unshift(buildPostCategoriesSection(res?.data?.allPost || []));
 
   const pageData = {
     ...pageDataResponse,

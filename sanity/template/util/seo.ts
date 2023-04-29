@@ -28,7 +28,7 @@ export const seo = {
       title: 'Image*',
       type: 'image',
       description:
-        'This will be shown when you share this page link. Advisable aspect ration is 2:1 width to height',
+        'Will be shown when you share this page link. Advisable aspect ration is 2:1 width to height',
       validation: (Rule: Rule) => Rule.required(),
     },
   ],
