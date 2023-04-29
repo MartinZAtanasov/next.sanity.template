@@ -16,6 +16,10 @@ import {
   PostCategoriesSection,
   PostCategoriesSectionProps,
 } from "../sections/PostCategoriesSection";
+import {
+  PersonalityCultHeroSection,
+  PersonalityCultHeroSectionProps,
+} from "../sections/PersonalityCultHeroSection";
 
 const {
   IMAGE_SECTION,
@@ -23,6 +27,7 @@ const {
   SIDE_IMAGE_SECTION,
   LIST_SECTION,
   POST_CATEGORIES_SECTION,
+  PERSONALITY_CULT_HERO_SECTION,
 } = SECTION_TYPE_NAMES;
 
 export interface PageProps {
@@ -83,6 +88,17 @@ export const Page: React.FC<PageProps> = (props) => {
               <PostCategoriesSection
                 {...{
                   ...(section as PostCategoriesSectionProps),
+                  altBase,
+                  key,
+                }}
+              />
+            );
+
+          case PERSONALITY_CULT_HERO_SECTION:
+            return (
+              <PersonalityCultHeroSection
+                {...{
+                  ...(section as PersonalityCultHeroSectionProps),
                   altBase,
                   key,
                 }}

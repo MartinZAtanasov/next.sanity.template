@@ -12,6 +12,7 @@ export const sections = {
         {type: 'doubleColumnsTextSection'},
         {type: 'listSection'},
         {type: 'sideImageSection'},
+        {type: 'personalityCultHeroSection'},
 
         {type: 'iconsSection'},
         {type: 'backgroundImageSection'},

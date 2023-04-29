@@ -1,5 +1,6 @@
 import { DoubleColumnsTextSectionProps } from "../components/sections/DoubleColumnsTextSection";
 import { ImageSectionProps } from "../components/sections/ImageSection";
+import { PersonalityCultHeroSectionProps } from "../components/sections/PersonalityCultHeroSection";
 import { PostCategoriesSectionProps } from "../components/sections/PostCategoriesSection";
 import { SideImageSectionProps } from "../components/sections/SideImageSection";
 import { SECTION_TYPE_NAMES } from "../types/sections";
@@ -12,6 +13,7 @@ const {
   TEXT_SECTION,
   LIST_SECTION,
   POST_CATEGORIES_SECTION,
+  PERSONALITY_CULT_HERO_SECTION,
 } = SECTION_TYPE_NAMES;
 
 const formatImageSectionData = (imageSection: any): ImageSectionProps => ({
@@ -44,6 +46,13 @@ const formatSideImageSectionData = (
   otherImages: sideImageSection.otherImages.map(formatSanityImage),
 });
 
+const formatPersonalityCultHeroSection = (
+  personalityCultHeroSection: any
+): PersonalityCultHeroSectionProps => ({
+  ...personalityCultHeroSection,
+  image: formatSanityImage(personalityCultHeroSection.image),
+});
+
 export const formatSectionsData = (sections: any[]) =>
   sections?.map((section: any) => {
     switch (section.__typename) {
@@ -58,6 +67,9 @@ export const formatSectionsData = (sections: any[]) =>
 
       case POST_CATEGORIES_SECTION:
         return formatPostCategoriesSection(section);
+
+      case PERSONALITY_CULT_HERO_SECTION:
+        return formatPersonalityCultHeroSection(section);
 
       case TEXT_SECTION:
         return section;

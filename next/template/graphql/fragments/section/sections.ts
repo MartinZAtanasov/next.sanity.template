@@ -19,6 +19,10 @@ import {
   LIST_SECTION_FRAGMENT,
   LIST_SECTION_FRAGMENT_NAME,
 } from "./listSection";
+import {
+  PERSONALITY_CULT_HERO_SECTION_FRAGMENT_NAME,
+  PERSONALITY_CULT_HERO_SECTION_FRAGMENT,
+} from "./personalityCultHeroSection";
 
 export const SECTIONS_FRAGMENT = gql`
   ${IMAGE_SECTION_FRAGMENT}
@@ -28,6 +32,7 @@ export const SECTIONS_FRAGMENT = gql`
   ${BACKGROUND_IMAGE_SECTION_FRAGMENT}
   ${TEXT_SECTION_FRAGMENT}
   ${LIST_SECTION_FRAGMENT}
+  ${PERSONALITY_CULT_HERO_SECTION_FRAGMENT}
   fragment SectionsFragment on Sections {
     sections {
       ... on ${SECTION_TYPE_NAMES.IMAGE_SECTION} {
@@ -50,6 +55,9 @@ export const SECTIONS_FRAGMENT = gql`
       }
       ... on ${SECTION_TYPE_NAMES.LIST_SECTION} {
         ...${LIST_SECTION_FRAGMENT_NAME}
+      }
+      ... on ${SECTION_TYPE_NAMES.PERSONALITY_CULT_HERO_SECTION} {
+        ...${PERSONALITY_CULT_HERO_SECTION_FRAGMENT_NAME}
       }
     }
   }

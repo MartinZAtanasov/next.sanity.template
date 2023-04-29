@@ -1,5 +1,3 @@
-import { Button } from "@mui/material";
-import { useRouter } from "next/router";
 import { Page, PageProps, fetchPageData } from "../template";
 
 export const getServerSideProps = async () => {
@@ -10,17 +8,6 @@ export const getServerSideProps = async () => {
   };
 };
 
-const Home = (props: PageProps) => {
-  const { push } = useRouter();
-
-  return (
-    <>
-      <Button variant="contained" onClick={() => push("/about")}>
-        To About page
-      </Button>
-      <Page {...props} />
-    </>
-  );
-};
+const Home = (props: PageProps) => <Page {...props} />;
 
 export default Home;

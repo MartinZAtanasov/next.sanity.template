@@ -1,4 +1,4 @@
-import { Box } from "@mui/material";
+import { Box, SxProps, Theme } from "@mui/material";
 
 import { PropsWithChildren } from "react";
 import { LAYOUT } from "../../../theme/constants";
@@ -7,10 +7,11 @@ import { mediaBreakPoint } from "../../../theme";
 interface Props extends PropsWithChildren {
   reverse?: boolean;
   gridTemplateColumns?: string;
+  sx?: SxProps<Theme>;
 }
 
 export const GridContainer = (props: Props) => {
-  const { children, reverse, gridTemplateColumns } = props;
+  const { children, reverse, gridTemplateColumns, sx } = props;
 
   return (
     <Box
@@ -29,6 +30,7 @@ export const GridContainer = (props: Props) => {
             order: 0,
           },
         },
+        ...sx,
       }}
     >
       {children}

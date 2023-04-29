@@ -5,12 +5,22 @@ import { mediaBreakPoint } from "../../../theme";
 
 const { SPACING_XL, SPACING_S, MAX_WIDTH, SPACING_XL_MOBILE } = LAYOUT;
 
-export const Section = ({ children }: PropsWithChildren) => (
+interface Props extends PropsWithChildren {
+  isHero?: boolean;
+}
+
+export const Section = ({ children, isHero }: Props) => (
   <Box
     sx={{
-      padding: `${SPACING_XL} ${SPACING_S}`,
+      padding: `${isHero ? 0 : SPACING_XL} ${SPACING_S} ${
+        isHero ? 0 : SPACING_XL
+      } ${SPACING_S}`,
+      background: (theme) =>
+        isHero ? theme.palette.background.default : "inherit",
       [mediaBreakPoint]: {
-        padding: `${SPACING_XL_MOBILE} ${SPACING_S}`,
+        padding: `${isHero ? 0 : SPACING_XL_MOBILE} ${SPACING_S} ${
+          isHero ? 0 : SPACING_XL_MOBILE
+        } ${SPACING_S}`,
       },
     }}
   >

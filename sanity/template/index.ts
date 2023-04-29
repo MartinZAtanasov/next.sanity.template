@@ -14,6 +14,7 @@ import {imageSection} from './sections/imageSection'
 import {sideImageSection} from './sections/sideImageSection'
 import {listSection} from './sections/listSection'
 import {post} from './post/post'
+import {personalityCultHeroSection} from './sections/personalityCultHeroSection'
 
 export const sanitySchemas = [
   blockContent,
@@ -27,6 +28,7 @@ export const sanitySchemas = [
   textSection,
   backgroundImageSection,
   doubleColumnsTextSection,
+  personalityCultHeroSection,
   iconsSection,
   imageSection,
   sideImageSection,

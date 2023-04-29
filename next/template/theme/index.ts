@@ -20,12 +20,18 @@ export const enrichedTheme = createTheme({
     },
   },
   typography: {
+    h1: {
+      fontFamily: "var(--primary-font-family)",
+      color: PALETTE.TEXT_HEADING,
+      fontSize: "70px",
+      lineHeight: 1,
+    },
     h2: {
       fontFamily: "var(--primary-font-family)",
       color: PALETTE.TEXT_HEADING,
       fontSize: "35px",
       marginBottom: LAYOUT.SPACING_L,
-      fontWeight: 600,
+      fontWeight: 500,
     },
     h3: {
       fontFamily: "var(--primary-font-family)",

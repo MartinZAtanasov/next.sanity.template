@@ -6,6 +6,7 @@ export enum SECTION_TYPE_NAMES {
   BACKGROUND_IMAGE_SECTION = "BackgroundImageSection",
   TEXT_SECTION = "TextSection",
   LIST_SECTION = "ListSection",
+  PERSONALITY_CULT_HERO_SECTION = "PersonalityCultHeroSection",
   // * This is used internally
   POST_CATEGORIES_SECTION = "PostCategoriesSection",
 }

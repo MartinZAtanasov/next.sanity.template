@@ -4,6 +4,9 @@ import { SanityBlockContent } from "../../shared/SanityBlockContent";
 import CheckCircleIcon from "@mui/icons-material/CheckCircle";
 import { GridContainer } from "../../shared/GridContainer";
 import { splitArray } from "../../../helpers/array";
+import { mediaBreakPoint } from "../../../theme";
+import CheckCircleOutlineIcon from "@mui/icons-material/CheckCircleOutline";
+import { LAYOUT } from "../../../theme/constants";
 
 export interface ListSectionProps {
   title: string;
@@ -25,12 +28,20 @@ export const ListSection = (props: ListSectionProps) => {
         <SanityBlockContent {...{ bodyRaw, altBase: "" }} />
       </Box>
 
-      <GridContainer>
+      <GridContainer
+        sx={{
+          mt: LAYOUT.SPACING_M,
+          [mediaBreakPoint]: {
+            gridTemplateColumns: "1fr",
+            rowGap: 0,
+          },
+        }}
+      >
         <List dense>
           {list1.map((item) => (
             <ListItem key={item}>
               <ListItemIcon>
-                <CheckCircleIcon color="primary" />
+                <CheckCircleOutlineIcon color="primary" fontSize="large" />
               </ListItemIcon>
               <ListItemText primary={item} />
             </ListItem>
@@ -41,7 +52,7 @@ export const ListSection = (props: ListSectionProps) => {
           {list2.map((item) => (
             <ListItem key={item}>
               <ListItemIcon>
-                <CheckCircleIcon color="primary" />
+                <CheckCircleOutlineIcon color="primary" fontSize="large" />
               </ListItemIcon>
               <ListItemText primary={item} />
             </ListItem>
