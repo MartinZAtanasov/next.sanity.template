@@ -52,7 +52,7 @@ export const Navigation = (props: NavigationProps) => {
       >
         <Box display="flex" alignItems="center" flex={1}>
           <NextLink href="/">
-            <NextImage {...formatDimensions(image, 50)} alt="logo" />
+            <NextImage {...formatDimensions(image, 50)} alt="logo" priority />
           </NextLink>
 
           <Box display="flex" gap="10px" ml="20px">
@@ -91,7 +91,11 @@ export const Navigation = (props: NavigationProps) => {
                   {label[0] === "+" ? (
                     <Typography component="span">{label}</Typography>
                   ) : (
-                    <NextImage {...formatDimensions(image, 30)} alt="contact" />
+                    <NextImage
+                      {...formatDimensions(image, 30)}
+                      alt="contact"
+                      priority
+                    />
                   )}
                 </NextLink>
               )}

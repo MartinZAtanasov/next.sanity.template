@@ -94,6 +94,7 @@ export const PersonalityCultHeroSection = (
                 image,
                 alt: `${altBase} - ${title}`,
                 maxWidth: imageMaxWidth,
+                priority: true,
               }}
             />
           </Box>
