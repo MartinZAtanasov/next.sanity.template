@@ -1,7 +1,9 @@
-import { gql } from '@apollo/client';
+import { gql } from "@apollo/client";
+
+export const IMAGE_FRAGMENT_NAME = "ImageFragment";
 
 export const IMAGE_FRAGMENT = gql`
-  fragment ImageFragment on Image {
+  fragment ${IMAGE_FRAGMENT_NAME} on Image {
     asset {
       url
       metadata {

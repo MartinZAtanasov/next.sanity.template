@@ -29,7 +29,15 @@ export const PersonalityCultHeroSection = (
 
   return (
     <>
-      <Section isHero>
+      <Section
+        sx={{
+          padding: `${0} ${LAYOUT.SPACING_S}`,
+          background: (theme) => theme.palette.background.default,
+          [mediaBreakPoint]: {
+            padding: `${0} ${LAYOUT.SPACING_S}`,
+          },
+        }}
+      >
         <GridContainer
           sx={{
             [mediaBreakPoint]: {

@@ -20,6 +20,7 @@ import {
   PersonalityCultHeroSection,
   PersonalityCultHeroSectionProps,
 } from "../sections/PersonalityCultHeroSection";
+import { Navigation, NavigationProps } from "./Navigation";
 
 const {
   IMAGE_SECTION,
@@ -33,11 +34,12 @@ const {
 export interface PageProps {
   seo: SEOType;
   slug: Slug;
+  navigation: NavigationProps;
   sections: { __typename: string }[];
 }
 
 export const Page: React.FC<PageProps> = (props) => {
-  const { sections = [], seo, slug } = props;
+  const { sections = [], seo, slug, navigation } = props;
 
   const url = `${process.env.NEXT_PUBLIC_BASE_URL}${slug.current}`;
   const { altBase } = seo;
@@ -45,6 +47,8 @@ export const Page: React.FC<PageProps> = (props) => {
   return (
     <>
       <SEO {...{ ...seo, url }} />
+
+      <Navigation {...navigation} />
 
       {sections.map((section, key: number) => {
         switch (section.__typename) {

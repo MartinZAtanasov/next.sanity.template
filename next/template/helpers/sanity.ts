@@ -1,3 +1,4 @@
+import { NavigationProps } from "../components/page/Navigation";
 import { DoubleColumnsTextSectionProps } from "../components/sections/DoubleColumnsTextSection";
 import { ImageSectionProps } from "../components/sections/ImageSection";
 import { PersonalityCultHeroSectionProps } from "../components/sections/PersonalityCultHeroSection";
@@ -85,4 +86,17 @@ export const formatSectionsData = (sections: any[]) =>
 export const buildPostCategoriesSection = (posts: any[]) => ({
   __typename: POST_CATEGORIES_SECTION,
   posts,
+});
+
+export const formatNavigationData = (navigation: any): NavigationProps => ({
+  ...navigation,
+  image: formatSanityImage(navigation.image),
+  contacts: navigation.contacts.map((v: any) => ({
+    ...v,
+    image: formatSanityImage(v.image),
+  })),
+  links: navigation.links.map((v: any) => ({
+    ...v,
+    slug: v.page.slug,
+  })),
 });

@@ -1,3 +1,5 @@
+import {Rule} from 'sanity'
+
 export const labelValueImage = {
   name: 'labelValueImage',
   title: 'Label - Value - Image',
@@ -7,11 +9,13 @@ export const labelValueImage = {
       name: 'label',
       title: 'Label',
       type: 'string',
+      validation: (Rule: Rule) => Rule.required(),
     },
     {
       name: 'value',
       title: 'Value',
       type: 'string',
+      validation: (Rule: Rule) => Rule.required(),
     },
     {
       name: 'image',
@@ -20,6 +24,7 @@ export const labelValueImage = {
       options: {
         hotspot: true,
       },
+      validation: (Rule: Rule) => Rule.required(),
     },
   ],
-};
+}

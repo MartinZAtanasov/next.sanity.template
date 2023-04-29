@@ -1,27 +1,22 @@
 import { PropsWithChildren } from "react";
-import { Box } from "@mui/material";
+import { Box, SxProps, Theme } from "@mui/material";
 import { LAYOUT } from "../../../theme/constants";
 import { mediaBreakPoint } from "../../../theme";
 
 const { SPACING_XL, SPACING_S, MAX_WIDTH, SPACING_XL_MOBILE } = LAYOUT;
 
 interface Props extends PropsWithChildren {
-  isHero?: boolean;
+  sx?: SxProps<Theme>;
 }
 
-export const Section = ({ children, isHero }: Props) => (
+export const Section = ({ children, sx }: Props) => (
   <Box
     sx={{
-      padding: `${isHero ? 0 : SPACING_XL} ${SPACING_S} ${
-        isHero ? 0 : SPACING_XL
-      } ${SPACING_S}`,
-      background: (theme) =>
-        isHero ? theme.palette.background.default : "inherit",
+      padding: `${SPACING_XL} ${SPACING_S}`,
       [mediaBreakPoint]: {
-        padding: `${isHero ? 0 : SPACING_XL_MOBILE} ${SPACING_S} ${
-          isHero ? 0 : SPACING_XL_MOBILE
-        } ${SPACING_S}`,
+        padding: `${SPACING_XL_MOBILE} ${SPACING_S}`,
       },
+      ...sx,
     }}
   >
     <Box maxWidth={MAX_WIDTH} mx="auto">
