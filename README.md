@@ -1,7 +1,7 @@
 # Theme
 
 1. **Fonts**: load the fonts in [\_app.tsx](./next/pages/_app.tsx)
-2. **Styles**: modify the files in [styles](./next/template/styles/)
+2. **Theme**: modify the files in [theme\index.ts](./next/template/theme/index.ts)
 3. **FavIcon**: hosted locally in [public](./next/public/) and used in [\_document.tsx](./next/pages/_document.tsx)
 
 # Apollo

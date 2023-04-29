@@ -1,10 +1,10 @@
 import type { AppProps } from "next/app";
-import { Balsamiq_Sans, Bellota_Text } from "next/font/google";
+import { Bellota_Text, Rubik } from "next/font/google";
 import { CssBaseline, ThemeProvider } from "@mui/material";
 import { enrichedTheme } from "../template/theme";
 
-const balsamiq = Balsamiq_Sans({ subsets: ["latin"], weight: "400" });
-const bellota = Bellota_Text({ subsets: ["latin"], weight: "700" });
+const primaryFont = Rubik({ subsets: ["latin"], weight: "400" });
+const secondaryFont = Bellota_Text({ subsets: ["latin"], weight: "700" });
 
 export default function App(props: AppProps) {
   const { Component, pageProps } = props;
@@ -13,8 +13,8 @@ export default function App(props: AppProps) {
     <>
       <style jsx global>{`
         :root {
-          --primary-font-family: ${balsamiq.style.fontFamily};
-          --secondary-font-family: ${bellota.style.fontFamily};
+          --primary-font-family: ${primaryFont.style.fontFamily};
+          --secondary-font-family: ${secondaryFont.style.fontFamily};
         }
       `}</style>
 

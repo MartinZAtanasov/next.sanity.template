@@ -13,24 +13,23 @@ export const enrichedTheme = createTheme({
     },
     text: {
       primary: PALETTE.TEXT_PRIMARY,
+      secondary: PALETTE.TEXT_PRIMARY,
+    },
+    background: {
+      default: PALETTE.BACKGROUND,
     },
   },
-
   typography: {
     h2: {
       fontFamily: "var(--primary-font-family)",
-      color: PALETTE.TEXT_PRIMARY,
-      fontSize: "40px",
+      color: PALETTE.TEXT_HEADING,
+      fontSize: "35px",
       marginBottom: LAYOUT.SPACING_L,
-      fontWeight: 700,
-      [mediaBreakPoint]: {
-        fontSize: "35px",
-        marginBottom: LAYOUT.SPACING_L_MOBILE,
-      },
+      fontWeight: 600,
     },
     h3: {
       fontFamily: "var(--primary-font-family)",
-      color: PALETTE.TEXT_PRIMARY,
+      color: PALETTE.TEXT_HEADING,
       fontSize: "28px",
       fontWeight: "bold",
     },
@@ -46,6 +45,13 @@ export const enrichedTheme = createTheme({
   },
 
   components: {
+    MuiCssBaseline: {
+      styleOverrides: {
+        body: {
+          background: PALETTE.MAIN_BACKGROUND,
+        },
+      },
+    },
     MuiTypography: {
       styleOverrides: {
         gutterBottom: {

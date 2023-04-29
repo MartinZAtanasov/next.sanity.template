@@ -42,7 +42,7 @@ export const SectionTitle = (props: SectionTitleProps) => {
           transform: `translateX(${center ? -50 : 0}%)`,
           bottom: "-10px",
           width: "170px",
-          height: "2px",
+          height: "4px",
           background: (theme) => theme.palette.primary.main,
         }}
       />
